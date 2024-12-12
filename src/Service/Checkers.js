@@ -38,4 +38,10 @@ export const ListChecker = {
   isIncludesValue: (list, value) => {
     return list.includes(value);
   },
+
+  // 주어진 리스트에 특정 값 하나만 있는지 확인
+  isOnlyOneValue: (list, value) => {
+    const set = new Set(list);
+    return set.size === 1 && set.has(value);
+  },
 };

@@ -12,3 +12,14 @@ export const getAllDishesFromMenuInfo = (menuInfo) => {
 
   return result;
 };
+
+export const getAllDishInfoFromMenuInfo = (menuInfo) => {
+  const allTypes = getAllTypesFromMenuInfo(menuInfo);
+
+  let result = [];
+  allTypes.forEach((type) => {
+    menuInfo[type].forEach((menu) => (result = [...result, menu]));
+  });
+
+  return result;
+};
