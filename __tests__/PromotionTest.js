@@ -4,6 +4,7 @@ import Promotion from '../src/Model/Promotion.js';
 describe('Promotion 클래스 테스트', () => {
   const order1 = new Order('양송이수프-2,제로콜라-1');
   const order2 = new Order('양송이수프-1,제로콜라-1');
+  const order3 = new Order('티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1');
 
   test.each([
     [order1, true],
@@ -14,13 +15,21 @@ describe('Promotion 클래스 테스트', () => {
   });
 
   test('모든 할인을 받을 수 있다.', () => {
-    const order = new Order('티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1');
-    const promotion = new Promotion(3, order);
+    const promotion = new Promotion(3, order3);
     expect(promotion.getTotalPrice()).toBe(31246);
   });
 
   test('10,000원 이하 구입하면 모든 할인을 받을 수 없다.', () => {
     const promotion = new Promotion(3, order2);
     expect(promotion.getTotalPrice()).toBe(0);
+  });
+
+  test.each([
+    [order1, '별'],
+    [order2, '없음'],
+    [order3, '산타'],
+  ])('할인 객체의 총 혜택 금액으로 이벤트 뱃지를 계산한다.', (order, result) => {
+    const promotion = new Promotion(3, order);
+    expect(promotion.getBadge()).toBe(result);
   });
 });

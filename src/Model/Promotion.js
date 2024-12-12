@@ -51,6 +51,13 @@ class Promotion {
       return acc + this.promotionPrice[info];
     }, 0);
   }
+
+  getBadge() {
+    if (!this.apply) return '없음';
+    if (NumberChecker.isMorethanMin(this.getTotalPrice(), 20_000)) return '산타';
+    if (NumberChecker.isMorethanMin(this.getTotalPrice(), 10_000)) return '트리';
+    return '별';
+  }
 }
 
 export default Promotion;
