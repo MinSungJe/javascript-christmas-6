@@ -33,4 +33,9 @@ export const ListChecker = {
     const set = new Set(list);
     return list.length === set.size;
   },
+
+  // 주어진 리스트에 특정 값이 있는지 확인
+  isIncludesValue: (list, value) => {
+    return list.includes(value);
+  },
 };
