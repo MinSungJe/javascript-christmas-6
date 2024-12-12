@@ -43,12 +43,23 @@ const OutputView = {
 
   printGiveStuff(promotion) {
     Console.print('<증정 메뉴>');
-    Console.print(`샴페인 ${promotion.promotionPrice.give / 25000}개`);
+    const giveCount = promotion.promotionPrice.give / 25000;
+    if (giveCount === 0) {
+      Console.print('없음');
+      this.printBlank();
+      return;
+    }
+    Console.print(`샴페인 ${giveCount}개`);
     this.printBlank();
   },
 
   printPromotion(promotion) {
     Console.print('<혜택 내역>');
+    if (!promotion.apply) {
+      Console.print('없음');
+      this.printBlank();
+      return;
+    }
     Console.print(
       `크리스마스 디데이 할인: -${promotion.promotionPrice.christmas.toLocaleString()}원`
     );
@@ -59,8 +70,10 @@ const OutputView = {
   },
 
   printTotalPromotionPrice(promotion) {
-    Console.print('<총 혜택 금액>');
-    Console.print(`-${promotion.getTotalPrice().toLocaleString()}원`);
+    Console.print('<총혜택 금액>');
+    const totalPrice = promotion.getTotalPrice();
+    if (totalPrice === 0) Console.print(`${totalPrice.toLocaleString()}원`);
+    else Console.print(`-${totalPrice.toLocaleString()}원`);
     this.printBlank();
   },
 
@@ -73,7 +86,6 @@ const OutputView = {
   printBadge(promotion) {
     Console.print('<12월 이벤트 배지>');
     Console.print(`${promotion.getBadge()}`);
-    this.printBlank();
   },
 };
 
