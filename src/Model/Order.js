@@ -39,6 +39,13 @@ class Order {
     return this.dishes.map((dish) => dish.type);
   }
 
+  getTypeAmount(type) {
+    return this.dishes.reduce((total, dish) => {
+      if (dish.type === type) return total + dish.amount;
+      return total;
+    }, 0);
+  }
+
   getTotalPrice() {
     let result = 0;
     let dishNameList = [];

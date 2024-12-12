@@ -29,4 +29,10 @@ describe('Order 객체 테스트', () => {
     const order = new Order('양송이수프-2,제로콜라-1');
     expect(order.getTotalPrice()).toBe(15000);
   });
+
+  test('해당 메뉴타입의 갯수를 알 수 있다.', () => {
+    const order = new Order('양송이수프-2,제로콜라-1');
+    expect(order.getTypeAmount('appetizer')).toBe(2);
+    expect(order.getTypeAmount('drink')).toBe(1);
+  });
 });
