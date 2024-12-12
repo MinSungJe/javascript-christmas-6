@@ -49,7 +49,6 @@ describe('기능 테스트', () => {
       '<할인 후 예상 결제 금액>',
       '<12월 이벤트 배지>',
     ];
-
     expectLogContains(getOutput(logSpy), expected);
   });
 
