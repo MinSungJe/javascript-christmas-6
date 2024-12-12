@@ -19,10 +19,16 @@ describe('Order 객체 테스트', () => {
     }).toThrow('[ERROR]');
   });
 
+  test('입력을 잘못했는지 확인한다.', () => {
+    expect(() => {
+      new Order('');
+    }).toThrow('[ERROR]');
+  });
+
   test('정상 주문', () => {
     expect(() => {
       new Order('티본스테이크-3,샴페인-5');
-    }).not.toThrow('[ERROR]');
+    }).not.toThrow('');
   });
 
   test('해당 주문의 총 가격을 알 수 있다.', () => {

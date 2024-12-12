@@ -34,6 +34,10 @@ class Dish {
     });
     return result;
   }
+
+  getDishString() {
+    return `${this.name} ${this.amount}개`;
+  }
 }
 
 export default Dish;

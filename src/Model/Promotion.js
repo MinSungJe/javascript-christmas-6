@@ -46,6 +46,13 @@ class Promotion {
     if (NumberChecker.isMorethanMin(this.price, 120_000)) this.promotionPrice.give += 25000;
   }
 
+  getDiscountPrice() {
+    return Object.keys(this.promotionPrice).reduce((acc, info) => {
+      if (info === 'give') return acc;
+      return acc + this.promotionPrice[info];
+    }, 0);
+  }
+
   getTotalPrice() {
     return Object.keys(this.promotionPrice).reduce((acc, info) => {
       return acc + this.promotionPrice[info];

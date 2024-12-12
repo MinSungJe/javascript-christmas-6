@@ -8,8 +8,8 @@ import Dish from './Dish.js';
 class Order {
   dishes;
 
-  constructor(menuInput) {
-    const orderList = menuInput.split(',');
+  constructor(orderInput) {
+    const orderList = orderInput.split(',');
     this.dishes = orderList.map((orderString) => new Dish(orderString));
     this.#validate();
   }
